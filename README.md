@@ -16,7 +16,6 @@ aarc allows user to create web applications in easy and simplest way, in aarc fr
   - It is simple and easy to learn.
   - It support custom libraries and services.
   - It is based on MVT Arhitecture.
-  - It support REST and CURD API.
   - Easy to create API Services.
   - Easy to deploy.
 
@@ -84,7 +83,6 @@ aarc is fast and lightweight php web framework. aarc framework is very simple an
   - It is simple and easy to learn.
   - It support custom libraries and services.
   - It is based on MVT Arhitecture.
-  - It support REST and CURD API.
   - Easy to create API Services.
   - Easy to deploy.
 
