@@ -1,7 +1,7 @@
 # Aarc Framework
 
 <p align="center">
-  <img src="aarc-logo.jpg" width="400px" alt="Aarc Logo">
+  <img src="aarc-logo.png" width="400px" alt="Aarc Logo">
 </p>
 
 Aarc is a high performance, open source web application framework.
@@ -91,7 +91,7 @@ aarc is fast and lightweight php web framework. aarc framework is very simple an
 ### aarc architecture
 
 <p align="center">
-  <img src="aarc-architecture.jpg" width="600px" alt="Aarc Framework architecture">
+  <img src="aarc-architecture.png" width="600px" alt="Aarc Framework architecture">
 </p>
 
 Aarc web framework based on MVT (Model-View-Template) architecture. The MVT (Model-View-Template) is a software design pattern. The Model helps to handle database. It is a data access layer which handles the database.
