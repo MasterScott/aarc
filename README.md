@@ -162,7 +162,7 @@ class view extends Views {
 
 ### Render templates
 
-  Render html templates, crate a template hello.php in templates directory.
+  Render html templates, crate a template `hello.html` or `hello.php` in templates directory.
 
 ```php
 class view extends Views {
@@ -364,7 +364,7 @@ class blog extends Models {
 
 #### Create a HTML template
 
-  Create a `hello.php` or `hello.html` file in a templates directory and put the following code in it.
+  Create a `hello.html` or `hello.php` file in a templates directory and put the following code in it.
 
 ```html
 <!DOCTYPE>
@@ -381,7 +381,7 @@ class blog extends Models {
 
 #### How to render templates
 
-  templates are render by views.
+  render your templates.
 
 ```php
 class view extends Views {
