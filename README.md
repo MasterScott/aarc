@@ -1001,6 +1001,18 @@ $errorhandler = [
 
   A settings file is a application default setting and configuration file.
 
+  **Debug**
+
+  Set the error_reporting directive at runtime.
+
+  ***SECURITY WARNING: don't run with debug turned on in production.***
+
+```php
+$setting['debug'] = TRUE;
+```
+  Set `$setting["debug"] = TRUE;` to show all error's.
+  Set `$setting["debug"] = FALSE` to hide all error's in production.
+  
   **User Libraries Configuration**
 
   Install user defined libraries in you web application.
