@@ -1011,6 +1011,7 @@ $errorhandler = [
 $setting['debug'] = TRUE;
 ```
   Set `$setting["debug"] = TRUE;` to show all error's.
+
   Set `$setting["debug"] = FALSE` to hide all error's in production.
   
   **User Libraries Configuration**
