@@ -676,24 +676,9 @@ $service = [
 ```php
 class view extends Views {
   function hello() {
-    return $this->hello->say_hello("aarc");
-  }
-}
-```
-
-  - **set alias name to your service**
-
-```php
-$service = [
-  //set alias name
-  'application/service/hello' => 'say',
-];
-```
-
-```php
-class view extends Views {
-  function hello() {
-    return $this->say->say_hello("aarc");
+    //create service object
+    $hello = new hello();
+    return $hello->say_hello("aarc");
   }
 }
 ```
