@@ -589,7 +589,7 @@ $this->post->var_name;
 
   **Service**
 
-  Services are classes that are located in the Service directory.
+  Services are reusable functions, classes and variables that are located in the Service directory.
 
 #### Create Libraries
 
