@@ -15,6 +15,7 @@ defined('BASEPATH') OR exit('No direct access allowed');
 
 $setting['debug'] = TRUE;
 
+
 /**
 * Users Libraries
 *
@@ -45,13 +46,8 @@ $library = [];
 * Example :
 *    $service = [
 *        '/application/service/login',
-*        '/application/service/user_authentication' => 'user',
+*        '/application/service/user_authentication',
 *    ];
-*
-* We can add an alias name of service.
-* for example if we want to access a login service so just write '$this->login->is_valid'.
-* but if we want to access user_authentication service so we have to write '$this->user_authentication->is_authenticated' that to difficult.
-* if we will use an alias name for services "application/service/user_authentication" => "user", now we can access this in very simple way like '$this->user->is_authenticated' that easy.
 *
 * Add your service path in 'service' array to install and use service's in your application.
 * you can also install or load your service manually.
@@ -84,6 +80,27 @@ $install = [
     'system.request',
     'system.security',
 ];
+
+
+/**
+* Template Directory
+*
+* Template directory is use to render you templates.
+* Example :
+*    1. Add single template directory.
+*        $template = '/application/templates';
+*
+*    2. Add multiple templates directory.
+*        $template = [
+*            '/application/templates',
+*        ];
+* Add templates directory to render your templates.
+*/
+
+$template = [
+    '/application/templates',
+];
+
 
 /**
 * Database Settings
@@ -137,6 +154,7 @@ $db['db'] = [
 
 $setting['static'] = '';
 
+
 /**
 * Media Files Directory
 *
@@ -156,30 +174,12 @@ $setting['media'] = '';
 
 
 /**
-* Template Directory
-*
-* Template directory is use to render you templates.
-* Example :
-*    1. Add single template directory.
-*        $template = '/application/templates';
-*
-*    2. Add multiple templates directory.
-*        $template = [
-*            '/application/templates',
-*        ];
-* Add templates directory to render your templates.
-*/
-
-$template = [
-    '/application/templates',
-];
-
-/**
 * Main URLs path
 * Set main URLs file path
 */
 
 $setting['urls'] = 'urls.php';
+
 
 /**
 * Urls Setting
