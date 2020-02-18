@@ -31,7 +31,8 @@ if($setting['debug'] === FALSE) {
   error_reporting(0);
 } else {
   //Turn on all error reporting.
-  error_reporting(E_ALL);
+  //It will display E_ERROR, E_WARNING, and E_PARSE error, it will not display any E_NOTICE and other error. to display all errors use E_ALL or -1 in error_reporting.
+  error_reporting(E_ERROR | E_WARNING | E_PARSE);
 }
 
 
