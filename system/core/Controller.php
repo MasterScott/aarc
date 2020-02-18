@@ -140,8 +140,6 @@ class Views{
     */
     foreach($this->config->service as $service) {
       $path=$service['path'];
-      $class=$service['class'];
-      $object=$service['object'];
       //Check service exists or not
       if(file_exists($path)) {
         require_once($path);
