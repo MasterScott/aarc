@@ -70,7 +70,7 @@ class Models{
   * Initialize database connection manually.
   */
   public function connect(string $dbname) {
-    $this->load_driver($this->__db_connection_settings,array($dbname));
+    $this->load_driver($this->db_setting, array($dbname));
   }
 
   /**
