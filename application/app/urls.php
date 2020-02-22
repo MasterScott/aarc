@@ -25,6 +25,6 @@ defined('BASEPATH') OR exit('No direct access allowed');
 //include views to route URLs
 require_once('views.php');
 
-$urlpatterns=[
+$urlpatterns = [
   '/' => 'app_view.home',
 ];
