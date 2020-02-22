@@ -27,6 +27,7 @@ defined('BASEPATH') OR exit('No direct access allowed');
 class Router{
   //Configuration object
   protected $config;
+
   /**
   * URL Routes
   * This variable store application URLs.
@@ -51,7 +52,7 @@ class Router{
     //Check for server error
     $this->server_error();
     //Route URLs
-    $this->router($this->config->request_path,$this->routes);
+    $this->router($this->config->request_path, $this->routes);
   }
 
   /**
@@ -65,7 +66,7 @@ class Router{
       $this->view=new $views['class'];
       $method=$views['method'];
       //Check in views class method exists or not
-      if(method_exists($this->view,$method)) {
+      if(method_exists($this->view, $method)) {
         //Call the views method
         $this->view->$method(...$pathVariables);
       } else {
@@ -85,7 +86,7 @@ class Router{
     $response_code=http_response_code();
     //Check user's custom errorhandler
     if(array_key_exists($response_code, $this->error_routes)) {
-      $this->load_view($this->error_routes[$response_code]['views'],array($this->config->request_path));
+      $this->load_view($this->error_routes[$response_code]['views'], array($this->config->request_path));
       exit();
     } else {
       //Default status codes
