@@ -58,7 +58,7 @@ class URI{
   */
   public function static(string $path=NULL){
     global $setting;
-    $static=$this->base_url().ltrim($setting['static'],'/');
+    $static=$this->base_url().'/'.ltrim($setting['static'],'/');
     if($path){
       $path=ltrim($path,'/');
       return rtrim($static,'/').'/'.$path;
@@ -73,7 +73,7 @@ class URI{
   */
   public function media(string $path=NULL){
     global $setting;
-    $media=$this->base_url().ltrim($setting['media'],'/');
+    $media=$this->base_url().'/'.ltrim($setting['media'],'/');
     if($path){
       $path=ltrim($path,'/');
       return rtrim($media,'/').'/'.$path;
