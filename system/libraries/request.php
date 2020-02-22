@@ -83,23 +83,26 @@ class request{
     //Get request method get, post, put, delete
     $this->method=strtoupper($_SERVER['REQUEST_METHOD']);
 
-    //Get host
-    $this->host=isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : FALSE;
-
-    //Get connection
-    $this->connection=isset($_SERVER['HTTP_CONNECTION']) ? $_SERVER['HTTP_CONNECTION'] : FALSE;
-
     //Get server protocol
     $this->protocol=isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : FALSE;
 
-    //Get accept language
-    $this->language=isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : FALSE;
+    //Get host
+    $this->host=isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : FALSE;
 
     //Get http_accept
     $this->accept=isset($_SERVER['HTTP_ACCEPT']) ? $_SERVER['HTTP_ACCEPT'] : FALSE;
 
-    //Get user agent
-    $this->user_agent=isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : FALSE;
+    //Get accept language
+    $this->language=isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? $_SERVER['HTTP_ACCEPT_LANGUAGE'] : FALSE;
+
+    //Get http encoding
+    $this->encoding=isset($_SERVER['HTTP_ACCEPT_ENCODING']) ? $_SERVER['HTTP_ACCEPT_ENCODING'] : FALSE;
+
+    //Get connection
+    $this->connection=isset($_SERVER['HTTP_CONNECTION']) ? $_SERVER['HTTP_CONNECTION'] : FALSE;
+
+    //Get http referer
+    $this->referer=isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : FALSE;
 
     //Get content type, request MIME type from header
     $this->content_type=isset($_SERVER['CONTENT_TYPE']) ? $_SERVER['CONTENT_TYPE'] : isset($_SERVER['HTTP_CONTENT_TYPE']) ? $_SERVER['HTTP_CONTENT_TYPE'] : FALSE;
@@ -107,8 +110,8 @@ class request{
     //Get content length
     $this->content_length=isset($_SERVER['CONTENT_LENGTH']) ? $_SERVER['CONTENT_LENGTH'] : isset($_SERVER['HTTP_CONTENT_LENGTH']) ? $_SERVER['HTTP_CONTENT_LENGTH'] : FALSE;
 
-    //Get http encoding
-    $this->encoding=isset($_SERVER['HTTP_ACCEPT_ENCODING']) ? $_SERVER['HTTP_ACCEPT_ENCODING'] : FALSE;
+    //Get user agent
+    $this->user_agent=isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : FALSE;
 
     //Header information array
     $this->headers=getallheaders();
@@ -203,9 +206,6 @@ class request{
 
     //Check request is redirected from some whare.
     $this->is_redirected=isset($_SERVER['HTTP_REFERER']) ? TRUE : FALSE;
-
-    //Get http referer
-    $this->referer=isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : FALSE;
   }
 
   //Build absolute URLs
