@@ -77,20 +77,14 @@ class request{
   public $is_redirected;
 
   function __construct() {
-    //Header information array
-    $this->headers=getallheaders();
-
     //Get scheme of request (https or http)
     $this->scheme=(isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] === 'on' || $_SERVER['HTTPS'] === 1)) || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') || (isset($_SERVER['HTTP_FRONT_END_HTTPS']) && strtolower($_SERVER['HTTP_FRONT_END_HTTPS'])!== 'off') ? 'https' : 'http';
 
+    //Get request method get, post, put, delete
+    $this->method=strtoupper($_SERVER['REQUEST_METHOD']);
+
     //Get host
     $this->host=isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : FALSE;
-
-    //Get port
-    $this->port=isset($_SERVER['SERVER_PORT']) ? $_SERVER['SERVER_PORT'] : FALSE;
-
-    //Get hostname
-    $this->hostname=isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : FALSE;
 
     //Get connection
     $this->connection=isset($_SERVER['HTTP_CONNECTION']) ? $_SERVER['HTTP_CONNECTION'] : FALSE;
@@ -107,23 +101,6 @@ class request{
     //Get user agent
     $this->user_agent=isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : FALSE;
 
-
-
-    //Get site full url
-    $this->url=$this->scheme.'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-
-    //Get request path without query string.
-    $this->path=isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '/';
-
-    //Get request path including query string.
-    $this->path_info=$_SERVER['REQUEST_URI'];
-
-    //Get Request URI
-    $this->request_uri=$_SERVER['REQUEST_URI'];
-
-    //Get request method get, post, put, delete
-    $this->method=strtoupper($_SERVER['REQUEST_METHOD']);
-
     //Get content type, request MIME type from header
     $this->content_type=isset($_SERVER['CONTENT_TYPE']) ? $_SERVER['CONTENT_TYPE'] : isset($_SERVER['HTTP_CONTENT_TYPE']) ? $_SERVER['HTTP_CONTENT_TYPE'] : FALSE;
 
@@ -133,6 +110,15 @@ class request{
     //Get http encoding
     $this->encoding=isset($_SERVER['HTTP_ACCEPT_ENCODING']) ? $_SERVER['HTTP_ACCEPT_ENCODING'] : FALSE;
 
+    //Header information array
+    $this->headers=getallheaders();
+
+
+    //Get port
+    $this->port=isset($_SERVER['SERVER_PORT']) ? $_SERVER['SERVER_PORT'] : FALSE;
+
+    //Get hostname
+    $this->hostname=isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : FALSE;
 
 
     //Check connection is secure
@@ -159,27 +145,58 @@ class request{
     //Check request method is head or not
     $this->is_head=$this->method === 'HEAD' ? TRUE : FALSE;
 
+    //Check request method is option or not
     $this->is_options=$this->method==='OPTIONS' ? TRUE : FALSE;
 
+    //Check request method is connect or not
     $this->is_connect=$this->method==='CONNECT' ? TRUE : FALSE;
 
+    //Check request method is trace or not
     $this->is_trace=$this->method==='TRACE' ? TRUE : FALSE;
 
+    //Check request method is copy or not
     $this->is_copy=$this->method==='COPY' ? TRUE : FALSE;
 
+    //Check request method is link or not
     $this->is_link=$this->method==='LINK' ? TRUE : FALSE;
 
+    //Check request method is unlink or not
     $this->is_unlink=$this->method==='UNLINK' ? TRUE : FALSE;
 
+    //Check request method is lock or not
     $this->is_lock=$this->method==='LOCK' ? TRUE : FALSE;
 
+    //Check request method is unlock or not
     $this->is_unlock=$this->method==='UNLOCK' ? TRUE : FALSE;
 
+    //Check request method is purge or not
     $this->is_purge=$this->method==='PURGE' ? TRUE : FALSE;
 
+    //Check request method is propfind or not
     $this->is_propfind=$this->method==='PROPFIND' ? TRUE : FALSE;
 
+    //Check request method is view or not
     $this->is_view=$this->method==='VIEW' ? TRUE : FALSE;
+
+    //Check protocol https or not
+    $this->is_http=$this->scheme==='http' ? TRUE : FALSE;
+
+    //Check protocol is http or not
+    $this->is_https=$this->scheme==='https' ? TRUE : FALSE;
+
+
+    //Get site full url
+    $this->url=$this->scheme.'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+
+    //Get request path without query string.
+    $this->path=isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '/';
+
+    //Get request path including query string.
+    $this->path_info=$_SERVER['REQUEST_URI'];
+
+    //Get Request URI
+    $this->request_uri=$_SERVER['REQUEST_URI'];
+
 
     //Cet remote ip address
     $this->remote_addr=isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : FALSE;
@@ -189,37 +206,30 @@ class request{
 
     //Get http referer
     $this->referer=isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : FALSE;
-
-    //Check protocol https or not
-    $this->is_http=$this->scheme==='http' ? TRUE : FALSE;
-
-    //Check protocol is http or not
-    $this->is_https=$this->scheme==='https' ? TRUE : FALSE;
-
   }
 
   //Build absolute URLs
   public function build_absolute_uri(string $path=NULL) {
     //Get Scheme HTTP or HTTPS
-    $scheme=$this->scheme.'://';
+    $url=$this->scheme.'://';
 
     //Get server hostname and port
     if(isset($_SERVER['HTTP_HOST'])) {
-      $scheme.=$_SERVER['HTTP_HOST'];
+      $url.=$_SERVER['HTTP_HOST'];
     } else if(isset($_SERVER['SERVER_NAME']) && isset($_SERVER['SERVER_POST'])){
-      $scheme.=$_SERVER['SERVER_NAME'].$_SERVER['SERVER_PORT'];
+      $url.=$_SERVER['SERVER_NAME'].$_SERVER['SERVER_PORT'];
     }
 
     //Generate URLs
     if($path) {
-      $scheme.='/'.ltrim($path,'/');
-      if(isset($scheme)) {
-        return $scheme;
+      $url.='/'.ltrim($path,'/');
+      if(isset($url)) {
+        return $url;
       } else {
         return FALSE;
       }
     } else {
-      return $scheme;
+      return $url;
     }
   }
 
