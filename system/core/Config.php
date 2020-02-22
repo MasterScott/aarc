@@ -122,7 +122,11 @@ class Config{
     }
 
     //Get server request path.
-    $this->request_path=isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '/';
+    if(isset($_SERVER['PATH_INFO'])) {
+      $this->request_path=isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '/';
+    } else {
+      $this->request_path=parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    }
 
     //Get errorhandler data.
     $this->errorhandler=$this->parse_error($errorhandler,$this->request_path);
