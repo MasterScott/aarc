@@ -70,6 +70,7 @@ class request{
   public $url;
   public $path;
   public $path_info;
+  public $request_uri;
 
   //User Information
   public $remote_addr;
@@ -116,6 +117,9 @@ class request{
 
     //Get request path including query string.
     $this->path_info=$_SERVER['REQUEST_URI'];
+
+    //Get Request URI
+    $this->request_uri=$_SERVER['REQUEST_URI'];
 
     //Get request method get, post, put, delete
     $this->method=strtoupper($_SERVER['REQUEST_METHOD']);
