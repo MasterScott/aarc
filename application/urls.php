@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct access allowed');
 * Create URLs and route to your views.
 */
 
-$urlpatterns=[
+$urlpatterns = [
   '/' => urls('application/app/urls.php'),
 ];
 
