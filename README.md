@@ -597,6 +597,8 @@ $this->post->var_name;
 
   - **Create your library**
 
+  create `hello.php` in library directory and put the following php code in it.
+
 ```php
 //hello world library
 class hello {
@@ -651,6 +653,8 @@ class view extends Views {
   user's can create their own services in aarc framework.
 
   - **Create your service**
+
+  create `hello.php` in service directory and put the following php code in it.
 
 ```php
 //hello world service
